@@ -1,70 +1,11 @@
-/* 
-  body{
-    background-image: url(./image.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 100vh;
-    background-position: center;
-    background-color: white;
-} */
-
-.container{
-    display: flex;
-    justify-content: center;
+.container_loader {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #1a1a1a94;
 }
 
-.search {
-    width: 100%;
-    padding: 12px 24px;
-    background-color: transparent;
-    font-size: 14px;
-    line-height: 18px;
-    color: #575756;
-    background-color: transparent;
-    margin-left: 0px;
-    box-shadow: inset 0px 0px 0px 4px #ddd6e8;
-  }
-
-  ul {
-    list-style: none; 
-    padding: 0;
-    text-shadow: 0 1px 0 rgba(255,255,255,.5);
-  }
-  
-  li {
-    display: block;
-    padding: .4em .4em .4em .8em;
-    margin: .5em 0 .5em 2.5em;
-    background: #ddd6e8;
-  }
-  
-  li:hover {
-    background: #DCDDE1;
-  }
-  
-  .icon{
-    width: 32px;
-  }
-  
-  .list{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  h1, h2, p, ul{
-    font-family: 'Open Sans', sans-serif;
-  }
-  
-  button{
-    background: #dbecc4;
-    border: none;
-    border-radius: 12px;
-    margin-top: 10px;
-  }
-
-
-  .lds-spinner {
+.lds-spinner {
     color: official;
     display: inline-block;
     position: relative;
