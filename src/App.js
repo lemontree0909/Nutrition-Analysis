@@ -63,12 +63,20 @@ function App() {
       {stateLoader && <LoaderPage />}
       <h1 className='container'>Nutrition Analysis</h1>
 
+<div className='table'>
+        <form onSubmit={finalSearch} className='firstBlock'>
+          <input className='search' placeholder='Search...' onChange={myNutritionSearch}/>
+          
+          <div className='line'>
+            <button>
+              update search
+            </button>
 
-        <form onSubmit={finalSearch} className='container'>
-          <input className='search' placeholder='Search...' onChange={myNutritionSearch} value={mySearch}/>
-          <button>
-          <img src="https://img.icons8.com/fluency/48/000000/fry.png" className="icons" alt="ico"/>
-        </button>
+            <button>
+              new search
+            </button>
+          </div>
+
         </form>
 
 
@@ -79,8 +87,8 @@ function App() {
 
         {
           myNutrition && Object.values(myNutrition.totalNutrients)
-            .map(({ label, quantity, unit }) =>
-              <NutritionComponent
+            .map(({ label, quantity, unit }, index) =>
+              <NutritionComponent key={index}
                 label={label}
                 quantity={quantity}
                 unit={unit}
@@ -89,7 +97,7 @@ function App() {
         }
         </div>
       </div>
-
+</div>
 
   );
 }
