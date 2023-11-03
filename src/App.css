@@ -5,6 +5,7 @@ body{
     min-height: 100vh;
     background-position: center;
     background-color: white;
+    position: relative;
 }
 
 .container{
@@ -15,9 +16,9 @@ body{
 .table{
   max-width: 500px;
   background-color: transparent;
-  margin: auto;
+  margin-left: 50%;
   padding: 20px;
-  border: 3px solid black;
+  border: 3px solid none;
 }
 
 .firstBlock{
@@ -28,6 +29,10 @@ body{
 .line{
   display: flex;
   justify-content: space-between;
+}
+
+.total{
+  height: 2vh;
 }
 
 .search {
@@ -49,11 +54,6 @@ body{
     display: block;
     padding: .4em .4em .4em .8em;
     margin: .5em 0 .5em 2.5em;
-    background: #ddd6e8;
-  }
-  
-  li:hover {
-    background: #DCDDE1;
   }
   
   .icon{
@@ -71,11 +71,14 @@ body{
   }
   
   button{
-    width: 15%;
-    background: #dbecc4;
+    color: #ffffd2;
+    background: #aa96da;
     border: none;
     border-radius: 12px;
     margin-top: 10px;
+    font-size: 14px;
+    padding: 7px;
+
   }
 
 

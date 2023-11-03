@@ -3,10 +3,10 @@ export function NutritionComponent({ label, quantity, unit }) {
 
 
     return(<div>
-        <div className="container">
-            <p><b>{label}</b></p>
-            <p>{quantity} {unit}</p>
-        </div>
+        <ul className="container total">
+            <li>{label} </li>
+            <p><b>: {quantity.toFixed()}</b> {unit}</p>
+        </ul>
 
         </div>)
 }
