@@ -13,7 +13,7 @@ body{
 }
 
 .search {
-    width: 100%;
+    width: 80%;
     padding: 12px 24px;
     background-color: transparent;
     font-size: 14px;
@@ -42,7 +42,7 @@ body{
   }
   
   .icon{
-    width: 32px;
+    width: 22px;
   }
   
   .list{

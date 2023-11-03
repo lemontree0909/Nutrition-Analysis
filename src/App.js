@@ -7,9 +7,9 @@ import { LoaderPage } from "./LoaderPage";
 
 function App() {
 
-  const [mySearch, setMySearch] = useState('');
+  const [mySearch, setMySearch] = useState();
   const [wordSubmitted, setWordSubmitted] = useState('');
-  const [myNutrition, setMyNutrition] = useState([]);
+  const [myNutrition, setMyNutrition] = useState();
   const [stateLoader, setStateLoader] = useState(false);
 
 
@@ -61,12 +61,14 @@ function App() {
     <div className="App">
 
       {stateLoader && <LoaderPage />}
-      <h1>Nutrition Analysis</h1>
+      <h1 className='container'>Nutrition Analysis</h1>
 
 
-        <form onSubmit={finalSearch}>
+        <form onSubmit={finalSearch} className='container'>
           <input className='search' placeholder='Search...' onChange={myNutritionSearch} value={mySearch}/>
-          <button type="submit">Search</button>
+          <button>
+          <img src="https://img.icons8.com/fluency/48/000000/fry.png" className="icons" alt="ico"/>
+        </button>
         </form>
 
 
