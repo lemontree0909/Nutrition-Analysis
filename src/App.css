@@ -1,12 +1,11 @@
-/* 
-  body{
+body{
     background-image: url(./image.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
     background-position: center;
     background-color: white;
-} */
+}
 
 .container{
     display: flex;

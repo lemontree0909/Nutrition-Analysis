@@ -1,6 +1,4 @@
-import './style.css';
-
-const Loader = () => {
+export const Loader = () => {
     return (
         <div class="lds-spinner">
             <div></div>
@@ -18,5 +16,3 @@ const Loader = () => {
         </div>
     )
 }
-
-export default Loader;
