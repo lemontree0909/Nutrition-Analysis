@@ -21,7 +21,7 @@ body{
   border: 3px solid none;
 }
 
-.firstBlock{
+.block{
     display: flex;
     flex-direction: column;
 }
@@ -29,6 +29,17 @@ body{
 .line{
   display: flex;
   justify-content: space-between;
+}
+
+.label{
+  display: flex; 
+  text-align: left; 
+  font-weight: bold;
+}
+
+.underline{
+  height: 3px;
+  background-color: #aa96da;
 }
 
 .total{
@@ -41,13 +52,9 @@ body{
     font-size: 14px;
     line-height: 18px;
     color: #575756;
-    box-shadow: inset 0px 0px 0px 4px #ddd6e8;
-  }
-
-  ul {
-    list-style: none; 
-    padding: 0;
-    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+    box-shadow: inset 0px 0px 0px 5px #ddd6e8;
+    border: 2px solid #aa96da;
+    font-family: 'Barlow', sans-serif;
   }
   
   li {
@@ -56,18 +63,14 @@ body{
     margin: .5em 0 .5em 2.5em;
   }
   
-  .icon{
-    width: 22px;
-  }
-  
   .list{
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   
-  h1, h2, p, ul{
-    font-family: 'Open Sans', sans-serif;
+  h1, p, ul{
+    font-family: 'Barlow', sans-serif;
   }
   
   button{
@@ -78,9 +81,8 @@ body{
     margin-top: 10px;
     font-size: 14px;
     padding: 7px;
-
+    font-family: 'Barlow', sans-serif;
   }
-
 
   .lds-spinner {
     color: official;
@@ -160,4 +162,40 @@ body{
       opacity: 0;
     }
   }
+
+
+
+  @media all and (max-width: 800px){
+    input{
+        font-size: 12px;
+    }
+    button{
+        font-size: 12px;
+        border: 1px solid black;
+        color: black;
+    }    
+    .label{
+        font-size: 15px;
+    }
+}
+@media all and (max-width: 500px){
+    .table{
+      margin-left: 0%;
+    }
+    input, button{
+        font-size: 10px;
+    }
+    .label{
+        font-size: 14px;
+    }
+    p, li{
+      font-size: 12px;
+
+    }
+    .total{
+      height: 1vh;
+    }
+}
+
+
   

@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 
 function App() {
 
-  const [mySearch, setMySearch] = useState(); // what user enters into the input field
+  const [mySearch, setMySearch] = useState(""); // what user enters into the input field
   const [wordSubmitted, setWordSubmitted] = useState(''); //initial state - no analysis, changed state - got analysis
   const [myNutrition, setMyNutrition] = useState(); // data form API 
   const [stateLoader, setStateLoader] = useState(false); // Loader state
@@ -43,25 +43,20 @@ function App() {
   const myNutritionSearch = (e) => {
     setMySearch (e.target.value);
   }
+// при нажатии на enter или на кнопку newSearch (функция finalSearch)
+// меняется состояние на то, что написано в поиске
+
+// при нажатии на кнопку updateSearch сбросить строку input на пустую
+
 
   const finalSearch = (e) =>{
     e.preventDefault();
     setWordSubmitted(mySearch);
   }
 
-  // 1) const updateSearch = (e: any) => {
-  //   e.preventDefault()
-  //   setMySearch('')
-  // }
-  
-  // 2) for (let i = 0; i < mySearch.length; i++) {
-  //   mySearch[i].value = '';
-  //  };
-
-  //   3) let mySearch = myNutrition && Object.values(myNutrition.totalNutrients);
-  //   mySearch.length = 0,
-  //   setMySearch = mySearch;
-
+   const updateSearch = (event) => {
+    setMySearch("");
+  }
 
   const alert =()=>{
     Swal.fire(
@@ -78,7 +73,6 @@ function App() {
     }
   }, [wordSubmitted])
 
-
   return (
     <div className="App">
 
@@ -86,40 +80,57 @@ function App() {
       <h1 className='container'>Nutrition Analysis</h1>
 
 <div className='table'>
-        <form onSubmit={finalSearch} className='firstBlock'>
-          <input className='search' placeholder='Enter Your Ingredients, ex: 1 apple, 1 cup strawberries, 100 ml milk...' onChange={myNutritionSearch}/>
-          
+        <form onSubmit={finalSearch} className='block'>
+          <input className='search'
+            placeholder='Enter Your Ingredients, ex: 1 apple, 1 cup strawberries, 100 ml milk...'
+            onChange={myNutritionSearch}
+            spellCheck="true"
+            type='text'
+            lang='en' value={mySearch}
+            />
+        </form>
+
           <div className='line'>
-            <button /* onClick={updateSearch} */>
+            <button onClick={updateSearch}
+            spellCheck="true"
+            type='text'
+            lang='en' value={mySearch}>
               update search
             </button>
-
-            <button>
+      
+            <button onClick={finalSearch}>
               new search
             </button>
           </div>
 
-        </form>
-
 
        <div>
-        <div className='container line'>
-        {
-          myNutrition && <p>calories {myNutrition.calories} kcal</p>
-        }
 
-        {
-          myNutrition && <p>carbs {myNutrition.totalNutrients.CHOCDF.quantity.toFixed()} g</p>
-        }
+          <div className='container line'>
+            <p><span className="label">YOUR INGREDIENTS:</span> {wordSubmitted}</p>
+          </div>
 
-        {
-          myNutrition && <p>fat {myNutrition.totalNutrients.FAT.quantity.toFixed()} g</p>
-        }
+          <div className='mainNutrition line'>
+          {
+            myNutrition && <p><span className="label">calories:</span> {myNutrition.calories} kcal</p>
+          }
 
-        {
-          myNutrition && <p>protein {myNutrition.totalNutrients.PROCNT.quantity.toFixed()} g</p>
-        }
-        </div>
+          {
+            myNutrition && <p><span className="label">carbs:</span> {myNutrition.totalNutrients.CHOCDF.quantity.toFixed(1)} g</p>
+          }
+
+          {
+            myNutrition && <p><span className="label">fat:</span> {myNutrition.totalNutrients.FAT.quantity.toFixed(2)} g</p>
+          }
+
+          {
+            myNutrition && <p><span className="label">protein:</span> {myNutrition.totalNutrients.PROCNT.quantity.toFixed(1)} g</p>
+          }
+          </div>
+
+          <hr className='underline'></hr>
+
+        
         {
           myNutrition && Object.values(myNutrition.totalNutrients)
             .map(({ label, quantity, unit }, index) =>
@@ -131,6 +142,7 @@ function App() {
             )
         }
         </div>
+        
       </div>
 </div>
 
