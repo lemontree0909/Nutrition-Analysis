@@ -7,6 +7,11 @@ body{
     background-color: white;
     position: relative;
 }
+.App{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .container{
     display: flex;
@@ -91,6 +96,7 @@ body{
     width: 80px;
     height: 80px;
   }
+
   .lds-spinner div {
     transform-origin: 40px 40px;
     animation: lds-spinner 1.2s linear infinite;
