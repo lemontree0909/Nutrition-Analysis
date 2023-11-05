@@ -163,8 +163,6 @@ body{
     }
   }
 
-
-
   @media all and (max-width: 800px){
     input{
         font-size: 12px;

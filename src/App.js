@@ -4,15 +4,12 @@ import {NutritionComponent} from './NutritionComponent';
 import { LoaderPage } from "./LoaderPage";
 import Swal from 'sweetalert2';
 
-
-
 function App() {
 
   const [mySearch, setMySearch] = useState(""); // what user enters into the input field
   const [wordSubmitted, setWordSubmitted] = useState(''); //initial state - no analysis, changed state - got analysis
   const [myNutrition, setMyNutrition] = useState(); // data form API 
   const [stateLoader, setStateLoader] = useState(false); // Loader state
-
 
   const MY_ID ="445c3b90";
   const MY_KEY = "b1aee6f87632e9efb75f95fd851072db";
@@ -45,16 +42,12 @@ function App() {
   }
 // при нажатии на enter или на кнопку newSearch (функция finalSearch)
 // меняется состояние на то, что написано в поиске
-
-// при нажатии на кнопку updateSearch сбросить строку input на пустую
-
-
   const finalSearch = (e) =>{
     e.preventDefault();
     setWordSubmitted(mySearch);
   }
-
-   const updateSearch = (event) => {
+// при нажатии на кнопку updateSearch сбросить строку input на пустую
+   const updateSearch = () => {
     setMySearch("");
   }
 
@@ -74,12 +67,12 @@ function App() {
   }, [wordSubmitted])
 
   return (
-    <div className="App">
+  <div className="App">
 
       {stateLoader && <LoaderPage />}
       <h1 className='container'>Nutrition Analysis</h1>
 
-<div className='table'>
+      <div className='table'>
         <form onSubmit={finalSearch} className='block'>
           <input className='search'
             placeholder='Enter Your Ingredients, ex: 1 apple, 1 cup strawberries, 100 ml milk...'
@@ -88,22 +81,20 @@ function App() {
             type='text'
             lang='en' value={mySearch}
             />
-        </form>
 
           <div className='line'>
             <button onClick={updateSearch}
             spellCheck="true"
-            type='text'
+            type='button'
             lang='en' value={mySearch}>
               update search
             </button>
       
-            <button onClick={finalSearch}>
+            <button type='submit'>
               new search
             </button>
           </div>
-
-
+        </form>
        <div>
 
           <div className='container line'>
@@ -129,7 +120,6 @@ function App() {
           </div>
 
           <hr className='underline'></hr>
-
         
         {
           myNutrition && Object.values(myNutrition.totalNutrients)
@@ -141,12 +131,9 @@ function App() {
               />
             )
         }
-        </div>
-        
       </div>
-</div>
-
+    </div>
+  </div>
   );
 }
-
 export default App;
