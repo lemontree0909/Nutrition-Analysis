@@ -11,8 +11,8 @@ function App() {
   const [myNutrition, setMyNutrition] = useState(); // data form API 
   const [stateLoader, setStateLoader] = useState(false); // Loader state
 
-  const MY_ID ="445c3b90";
-  const MY_KEY = "b1aee6f87632e9efb75f95fd851072db";
+  const MY_ID ="80273800";
+  const MY_KEY = "d7ad75ad2a3b9cea5c00131a1fe83dc7";
   const APP_URL = 'https://api.edamam.com/api/nutrition-details'
 
   const fetchData = async (ingr) => {
