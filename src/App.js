@@ -28,14 +28,13 @@ function App() {
     })
     console.log(response.status);
     
-    if(response.status_code === 200) {
+    if(response.ok) {
       setStateLoader(false);
       const data = await response.json();
       setMyNutrition(data);
     }
-    else if (response.status_code === 429) {
+    else if (response.status === 429) {
       setStateLoader(false);
-      const data = await response.json();
       alertLimits();
     }
     else {
