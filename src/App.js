@@ -73,6 +73,7 @@ function App() {
       let ingr = wordSubmitted.split(/[,,;,\n,\r]/);
       fetchData(ingr);
     }
+// eslint-disable-next-line
   }, [wordSubmitted])
 
   return (
