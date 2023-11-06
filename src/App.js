@@ -26,14 +26,21 @@ function App() {
       },
       body: JSON.stringify({ ingr: ingr })
     })
-
-    if(response.ok) {
+    console.log(response.status);
+    
+    if(response.status_code === 200) {
       setStateLoader(false);
       const data = await response.json();
       setMyNutrition(data);
-    } else {
+    }
+    if (response.status_code === 429) {
       setStateLoader(false);
-      alert();
+      const data = await response.json();
+      alertLimits();
+    }
+    else {
+      setStateLoader(false);
+      alertFault();
     }
   }
 
@@ -51,12 +58,15 @@ function App() {
     setMySearch("");
   }
 
-  const alert =()=>{
+  const alertFault =()=>{
     Swal.fire(
       'Ingredients are entered incorrectly',
       'Follow an example: 1 apple, 1 cup strawberries, 100ml milk',
       'Try again!'
     )
+  }
+  const alertLimits =()=>{
+    Swal.fire("Usage limits are exceeded");
   }
 
   useEffect(() => {
