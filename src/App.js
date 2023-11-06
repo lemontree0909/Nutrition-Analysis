@@ -33,7 +33,7 @@ function App() {
       const data = await response.json();
       setMyNutrition(data);
     }
-    if (response.status_code === 429) {
+    else if (response.status_code === 429) {
       setStateLoader(false);
       const data = await response.json();
       alertLimits();
