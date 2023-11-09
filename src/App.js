@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import './App.css';
 import {NutritionComponent} from './NutritionComponent';
 import { LoaderPage } from "./LoaderPage";
@@ -15,8 +15,19 @@ function App() {
   const MY_KEY = "d7ad75ad2a3b9cea5c00131a1fe83dc7";
   const APP_URL = 'https://api.edamam.com/api/nutrition-details'
 
-  const fetchData = async (ingr) => {
+  const fetchData = useCallback ( async (ingr) => {
     setStateLoader(true);
+
+    const alertFault =()=>{
+      Swal.fire(
+        'Ingredients are entered incorrectly',
+        'Follow an example: 1 apple, 1 cup strawberries, 100ml milk',
+        'Try again!'
+      )
+    }
+    const alertLimits =()=>{
+      Swal.fire("Usage limits are exceeded");
+    } 
 
     const response = await fetch(`${APP_URL}?app_id=${MY_ID}&app_key=${MY_KEY}`, {
       method: "POST",
@@ -41,7 +52,7 @@ function App() {
       setStateLoader(false);
       alertFault();
     }
-  }
+  }, [])
 
   const myNutritionSearch = (e) => {
     setMySearch (e.target.value);
@@ -57,24 +68,12 @@ function App() {
     setMySearch("");
   }
 
-  const alertFault =()=>{
-    Swal.fire(
-      'Ingredients are entered incorrectly',
-      'Follow an example: 1 apple, 1 cup strawberries, 100ml milk',
-      'Try again!'
-    )
-  }
-  const alertLimits =()=>{
-    Swal.fire("Usage limits are exceeded");
-  }
-
   useEffect(() => {
     if (wordSubmitted !== '') {
       let ingr = wordSubmitted.split(/[,,;,\n,\r]/);
       fetchData(ingr);
     }
-// eslint-disable-next-line
-  }, [wordSubmitted])
+  }, [wordSubmitted, fetchData])
 
   return (
   <div className="App">
